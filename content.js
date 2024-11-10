@@ -1,9 +1,19 @@
-// Select elements to remove
-const elementsToRemove = document.querySelectorAll('img, video, iframe, .ad, .sidebar, .footer, figure, figcaption');
+// Listen for messages from background script
+browser.runtime.onMessage.addListener((message) => {
+  if (message.action === "removeElements") {
+    removeElements(['img', 'video', 'iframe', 'figure', 'figcaption','ad','in-article-adx']);
+  }
 
-// Remove each element
-elementsToRemove.forEach(element => {
-  element.remove();
+  if (message.action === "removeAds") {
+    removeElements(['.ad', '.sidebar', '.footer', 'iframe']);
+  }
 });
 
-console.log("Content script is active on this page.");
+// Function to remove specified elements from the DOM
+function removeElements(selectors) {
+  const elementsToRemove = document.querySelectorAll(selectors.join(', '));
+  elementsToRemove.forEach(element => element.remove());
+}
+
+
+

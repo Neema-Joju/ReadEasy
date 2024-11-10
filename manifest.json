@@ -3,13 +3,17 @@
     "name": "ReadEasy Extension",
     "version": "1.0",
     "description": "Removes distracting elements from web pages.",
-    "permissions": ["webRequest", "webRequestBlocking", "<all_urls>"],
+    "permissions": ["webRequest", "webRequestBlocking", "storage", "activeTab", "<all_urls>"],
+    "action": {
+      "default_popup": "popup.html"
+      
+    },
     "background": {
-      "service_worker": "background.js"
+      "scripts": ["background.js"]
     },
     "content_scripts": [
       {
-        "matches": ["<all_urls>"],
+        "matches": ["http://*/*", "https://*/*"],
         "js": ["content.js"]
       }
     ]
