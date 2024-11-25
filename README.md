@@ -8,7 +8,7 @@ To install and use this firefox extension
 
 ### Clone this repository or download the source code
 
-1. Open Firefox and go to `about:debugging`
+1. Open Firefox and enter `about:debugging`
 2. Go to `This Firefox`
 3. Click on `Load Temporary Add-On`
 4. Select `manifest.json` here
